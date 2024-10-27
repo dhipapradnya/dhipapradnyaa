@@ -1,0 +1,105 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: WebLayout(),
+    );
+  }
+}
+
+class WebLayout extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Row(
+            children: [
+              // Sidebar
+              Flexible(
+                flex: 2,
+                child: Container(
+                  color: Colors.teal[700],
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          'Sidebar',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      // Tambahkan item sidebar lain di sini
+                    ],
+                  ),
+                ),
+              ),
+              // Bagian utama
+              Flexible(
+                flex: 8,
+                child: Column(
+                  children: [
+                    // Header
+                    Container(
+                      height: 60,
+                      color: Colors.blueAccent,
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Header',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    // Content
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.all(16),
+                        color: Colors.white,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Content Area',
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Expanded(
+                              child: SingleChildScrollView(
+                                child: Text(
+                                  'This is the content area where detailed information is displayed. '
+                                  'You can add more widgets or text here to fill up the content section.',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+}
